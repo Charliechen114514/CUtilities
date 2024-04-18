@@ -1,0 +1,32 @@
+#pragma once
+#include "DataStructBasicHeader.h"
+#ifndef _CCDYNAMIC_ARR_H_
+#define _CCDYNAMIC_ARR_H_
+
+#ifdef CCSTD_LANGUAGE_C
+typedef struct __CCDynamicArray
+{
+	CCAny_t		core_data;
+	CCSize_t	core_size;
+	CCSize_t	elem_size;
+}CCDynamicArray;
+
+
+CCDynamicArray* CCDynamicArray_createEmpty(CCSize_t elemSize);
+CCDynamicArray* CCDynamicArray_createCCDynamicArray(void* arrayBegin, CCSize_t n, CCSize_t size);
+CCDynamicArray* CCDynamicArray_cloneCCDynamicArray(CCDynamicArray* array);
+
+CCBOOL_t		CCDynamicArray_pushBackSingle(CCDynamicArray* array, void* sigElem);
+CCBOOL_t		CCDynamicArray_pushBackMulti(CCDynamicArray* pushee, void* array, CCSize_t n);
+CCBOOL_t		CCDynamicArray_pushBackArray(CCDynamicArray* pushee, CCDynamicArray* array);
+
+CCBOOL_t		CCDynamicArray_Iterate(CCDynamicArray* arr, HandleEachElem func, void* args);
+
+CCBOOL_t		CCDynamicArray_Free(CCDynamicArray* arr);
+
+
+#endif	
+
+
+#endif
+
