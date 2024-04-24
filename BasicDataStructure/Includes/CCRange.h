@@ -15,5 +15,8 @@ CCBOOL_t	CCIntRange_checkRangeIfisBasicValid(CCIntRange* range);
 CCBOOL_t	CCIntRange_checkRangeIfisUnsignedValid(CCIntRange* range);
 CCIntRange* CCIntRange_makeHeapIntRange(CCIntRange_t beg, CCIntRange_t end);
 CCSize_t	CCIntRange_GetSize(CCIntRange* range);
+CCBOOL_t	CCIntRange_InRange(CCIntRange_t index, CCIntRange* range);
+
+
 #endif
 

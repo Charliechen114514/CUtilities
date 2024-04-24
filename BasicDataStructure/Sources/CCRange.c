@@ -34,3 +34,12 @@ CCSize_t	CCIntRange_GetSize(CCIntRange* range) {
 	else
 		return -1;
 }
+
+CCBOOL_t	CCIntRange_InRange(CCIntRange_t index, CCIntRange* range)
+{
+	if (!CCIntRange_checkRangeIfisBasicValid(range))
+		return False;
+	return index >= range->begin && index <= range->end;
+}
+
+
