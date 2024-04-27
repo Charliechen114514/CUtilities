@@ -22,3 +22,16 @@ CCPlainObject*	clonePlainObject(CCPlainObject* other);
 CCBOOL_t		changePlainObject(CCPlainObject* plain, void* newData, CCSize_t dataSize, CCBOOL_t req_copy);;
 
 CCBOOL_t		freePlainObject(CCPlainObject* p);
+
+
+typedef struct __CCObject {
+	CCPlainObject*	coreObject;
+	const char*		typeString;
+}CCObject;
+
+CCObject* CCObject_createObject(	void* data, CCSize_t dataSize,
+									CCBOOL_t req_copy, const char* typeString);
+
+CCObject* CCObject_cloneObject(CCObject* other);
+
+CCBOOL_t  CCObject_freeObject(CCObject* object);

@@ -53,3 +53,46 @@ CCBOOL_t freePlainObject(CCPlainObject* p)
 	CCSTD_SAFE_FREE(p);
 	return True;
 }
+
+
+CCObject* CCObject_createObject(void* data, CCSize_t dataSize,
+	CCBOOL_t req_copy, const char* typeString)
+{
+	CCSTD_MALLOC_ONE(new_one, CCObject);
+	new_one->coreObject = createPlainObject(data, dataSize, req_copy);
+	if (!new_one->coreObject) {
+		CCSTD_SAFE_FREE(new_one);
+		return False;
+	}
+
+	int str_len = 1;
+	COPY_TO_HEAP(res, typeString);
+	new_one->typeString = res;
+	return new_one;
+}
+
+CCObject* CCObject_cloneObject(CCObject* other)
+{
+	DEFAULT_DENY(other, NUL_PTR);
+	CCSTD_MALLOC_ONE(new_one, CCObject);
+	new_one->coreObject = clonePlainObject(other->coreObject);
+	if (!new_one->coreObject)
+	{
+		CCSTD_SAFE_FREE(other);
+		return False;
+	}
+
+	COPY_TO_HEAP(res, other->typeString);
+	new_one->typeString = res;
+
+	return new_one;
+}
+
+CCBOOL_t  CCObject_freeObject(CCObject* object)
+{
+	CCSTD_SAFE_FREE(object->coreObject);
+	CCSTD_SAFE_FREE(object->typeString);
+	CCSTD_SAFE_FREE(object);
+
+	return True;
+}

@@ -18,4 +18,13 @@ do{													\
 
 #define TIL_END		(-1)
 
+// Raw String Utils
+#define COPY_TO_HEAP(ptr, strings) \
+	int __len_of_str = 1;\
+	const char* pStr = strings;\
+	for(;__len_of_str++, *pStr != '\0';pStr++);\
+	CCSTD_MALLOC_BYTES(ptr, __len_of_str); \
+	memcpy(ptr, strings, __len_of_str)
+
+
 #endif

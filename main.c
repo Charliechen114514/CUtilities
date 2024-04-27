@@ -4,6 +4,7 @@
 
 int main()
 {
-	testDynamicArray();
-	testMutex();
+	//testDynamicArray();
+	//testMutex();
+	testDynamicPlugin();
 }
