@@ -2,6 +2,12 @@
 #define __USE_C_
 #ifdef __USE_C_
 
+#ifdef  _MSC_VER
+#define ACCEPT_VLD_INCLUDE 1
+#else
+#define ACCEPT_VLD_INCLUDE 0
+#endif
+
 #define CCSTD_LANGUAGE_C
 #define CCSTD_NAMESPACE_BEGIN
 #define CCSTD_NAMESPACE_END
